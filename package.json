@@ -1,0 +1,14 @@
+{
+    "name": "visa-appointment-bot",
+    "version": "1.0.0",
+    "description": "Visa appointment booking bot using Puppeteer",
+    "main": "bot.js",
+    "scripts": {
+        "start": "node bot.js"
+    },
+    "dependencies": {
+        "express": "^4.18.2",
+        "puppeteer": "^22.8.2",
+        "cors": "^2.8.5"
+    }
+}

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa Appointment Bot</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-dark: #4338CA;
+            --primary-light: #818CF8;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #EEF2FF 0%, #FFFFFF 100%);
+            min-height: 100vh;
+        }
+
+        .loading {
+            display: none;
+        }
+
+        .loading.active {
+            display: flex;
+        }
+
+        .form-input {
+            margin-top: 0.25rem;
+            display: block;
+            width: 100%;
+            border-radius: 0.75rem;
+            border: 2px solid #E5E7EB;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            background-color: #F9FAFB;
+            transition: all 200ms ease-in-out;
+        }
+
+        .form-input:hover {
+            border-color: var(--primary-light);
+            background-color: #FFFFFF;
+        }
+
+        .form-input:focus {
+            border-color: var(--primary);
+            background-color: #FFFFFF;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+            outline: none;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #1F2937;
+            margin-bottom: 0.5rem;
+            transition: color 200ms ease;
+        }
+
+        .form-input:focus+.form-label {
+            color: var(--primary);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 0.875rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+            transition: all 300ms ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -10px rgba(79, 70, 229, 0.5);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 300ms ease, box-shadow 300ms ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -20px rgba(0, 0, 0, 0.15);
+        }
+
+        .title-gradient {
+            background: linear-gradient(135deg, #1F2937 0%, #4F46E5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .loading-spinner {
+            border: 3px solid rgba(99, 102, 241, 0.1);
+            border-radius: 50%;
+            border-top: 3px solid var(--primary);
+            width: 2rem;
+            height: 2rem;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        select.form-input {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%234F46E5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.5em;
+            padding-right: 2.5rem;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen py-12">
+    <div class="container mx-auto px-4">
+        <div class="max-w-2xl mx-auto">
+            <div class="text-center mb-12 animate-float">
+                <h1 class="text-5xl font-bold title-gradient mb-4">Visa Appointment Bot</h1>
+                <p class="text-gray-600 text-lg">Automate your visa appointment scheduling process</p>
+            </div>
+
+            <div class="card">
+                <form id="botForm" class="space-y-8">
+                    <div>
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" name="email" required class="form-input"
+                            placeholder="Enter your email">
+                    </div>
+
+                    <div>
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" name="password" required class="form-input"
+                            placeholder="Enter your password">
+                    </div>
+
+                    <div>
+                        <label for="location" class="form-label">Preferred Location</label>
+                        <select id="location" name="location" required class="form-input">
+                            <option value="">Select a location</option>
+                            <option value="Lagos">Lagos</option>
+                            <option value="Abuja">Abuja</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="nextTry" class="form-label">Number of Months to Check</label>
+                        <input type="number" id="nextTry" name="nextTry" min="1" value="1" class="form-input">
+                    </div>
+
+                    <div>
+                        <label for="maxCycles" class="form-label">Maximum Cycles</label>
+                        <div class="flex items-center space-x-4">
+                            <input type="number" id="maxCycles" name="maxCycles" min="1" value="3" class="form-input">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="infiniteCycles" name="infiniteCycles"
+                                    class="form-checkbox h-5 w-5 text-indigo-600">
+                                <label for="infiniteCycles" class="ml-2 text-gray-700">Run indefinitely</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center pt-6">
+                        <button type="submit" class="btn-primary">
+                            Start Bot
+                        </button>
+                    </div>
+                </form>
+
+                <div id="loading" class="loading items-center justify-center mt-8 space-x-4">
+                    <div class="loading-spinner"></div>
+                    <span class="text-gray-600 font-medium">Bot is running...</span>
+                </div>
+
+                <div id="result" class="mt-8 hidden">
+                    <div class="p-6 rounded-xl">
+                        <p id="resultMessage" class="text-center font-medium"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('botForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const loading = document.getElementById('loading');
+            const result = document.getElementById('result');
+            const resultMessage = document.getElementById('resultMessage');
+
+            loading.classList.add('active');
+            result.classList.add('hidden');
+
+            const formData = {
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+                location: document.getElementById('location').value,
+                nextTry: parseInt(document.getElementById('nextTry').value),
+                maxCycles: document.getElementById('infiniteCycles').checked ? -1 : parseInt(document.getElementById('maxCycles').value)
+            };
+
+            try {
+                const response = await fetch('/bot/execute', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+
+                result.classList.remove('hidden');
+                resultMessage.textContent = data.message;
+
+                if (data.status === 'success') {
+                    result.classList.add('bg-green-50', 'text-green-700', 'border', 'border-green-200');
+                } else {
+                    result.classList.add('bg-yellow-50', 'text-yellow-700', 'border', 'border-yellow-200');
+                }
+            } catch (error) {
+                result.classList.remove('hidden');
+                result.classList.add('bg-red-50', 'text-red-700', 'border', 'border-red-200');
+                resultMessage.textContent = 'Error: ' + error.message;
+            } finally {
+                loading.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+
+</html>
