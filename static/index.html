@@ -193,6 +193,13 @@
                     </div>
 
                     <div>
+                        <label for="targetMonth" class="form-label">Target Month (Optional)</label>
+                        <input type="month" id="targetMonth" name="targetMonth" class="form-input" min="2024-01"
+                            max="2025-12" placeholder="Select target month">
+                        <p class="text-sm text-gray-500 mt-1">Leave empty to search from current month</p>
+                    </div>
+
+                    <div>
                         <label for="nextTry" class="form-label">Number of Months to Check</label>
                         <input type="number" id="nextTry" name="nextTry" min="1" value="1" class="form-input">
                     </div>
@@ -245,6 +252,7 @@
                 email: document.getElementById('email').value,
                 password: document.getElementById('password').value,
                 location: document.getElementById('location').value,
+                targetMonth: document.getElementById('targetMonth').value,
                 nextTry: parseInt(document.getElementById('nextTry').value),
                 maxCycles: document.getElementById('infiniteCycles').checked ? -1 : parseInt(document.getElementById('maxCycles').value)
             };

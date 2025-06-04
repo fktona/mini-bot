@@ -1,0 +1,26 @@
+[6188:6768:0528/140536.791:INFO:components\enterprise\browser\controller\chrome_browser_cloud_management_controller.cc:202] No machine level policy manager exists.
+[30356:8960:0528/140536.974:VERBOSE1:components\viz\service\main\viz_main_impl.cc:85] VizNullHypothesis is disabled (not a warning)
+[30356:8960:0528/140536.975:ERROR:gpu\ipc\service\gpu_channel_manager.cc:962] Failed to create GLES3 context, fallback to GLES2.
+[30356:8960:0528/140536.987:ERROR:gpu\ipc\service\gpu_channel_manager.cc:973] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[14132:25892:0528/140537.264:INFO:third_party\webrtc\system_wrappers\source\cpu_info.cc:56] Available number of cores: 8
+[30356:8960:0528/140537.305:ERROR:gpu\ipc\service\gpu_channel_manager.cc:962] Failed to create GLES3 context, fallback to GLES2.
+[30356:8960:0528/140537.328:ERROR:gpu\ipc\service\gpu_channel_manager.cc:973] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[30356:8960:0528/140537.330:ERROR:gpu\ipc\service\gpu_channel_manager.cc:962] Failed to create GLES3 context, fallback to GLES2.
+[30356:8960:0528/140537.330:ERROR:gpu\ipc\service\gpu_channel_manager.cc:973] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[13796:30188:0528/140537.649:INFO:third_party\webrtc\system_wrappers\source\cpu_info.cc:56] Available number of cores: 8
+[16332:23472:0528/140537.904:INFO:third_party\webrtc\system_wrappers\source\cpu_info.cc:56] Available number of cores: 8
+[28176:26468:0528/140538.060:INFO:third_party\webrtc\system_wrappers\source\cpu_info.cc:56] Available number of cores: 8
+[6188:6768:0528/140542.031:INFO:CONSOLE:1] "ERROR [object Object]", source: https://www.usvisaappt.com/visaapplicantui/main.a5506f71e22f7f3b.js (1)
+[6132:24368:0528/140545.016:INFO:third_party\webrtc\system_wrappers\source\cpu_info.cc:56] Available number of cores: 8
+[6188:6768:0528/140545.485:INFO:CONSOLE:0] "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.", source: https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LdVVDAqAAAAAK4DS06UwosT8o1SA_3WhzUDAWAp&co=aHR0cHM6Ly93d3cudXN2aXNhYXBwdC5jb206NDQz&hl=en&type=image&v=jt8Oh2-Ue1u7nEbJQUIdocyd&theme=light&size=normal&cb=ktoefpvjzmhr (0)
+[6188:6768:0528/140547.065:INFO:CONSOLE:42] "Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxK.woff2", source: https://www.gstatic.com/recaptcha/releases/jt8Oh2-Ue1u7nEbJQUIdocyd/recaptcha__en.js (42)
+[6188:6768:0528/140547.655:INFO:CONSOLE:0] "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.", source: https://www.google.com/recaptcha/api2/bframe?hl=en&v=jt8Oh2-Ue1u7nEbJQUIdocyd&k=6LdVVDAqAAAAAK4DS06UwosT8o1SA_3WhzUDAWAp (0)
+[6188:6768:0528/140548.078:WARNING:components\download\internal\background_service\controller_impl.cc:1187] Background download complete, client: 6, completion type: 0, file size:5158
+[6188:6768:0528/140548.726:WARNING:components\download\internal\background_service\controller_impl.cc:1187] Background download complete, client: 6, completion type: 0, file size:265059
+[6188:6768:0528/140549.183:WARNING:components\download\internal\background_service\controller_impl.cc:1187] Background download complete, client: 6, completion type: 0, file size:883094
+[6188:6768:0528/140549.644:WARNING:components\download\internal\background_service\controller_impl.cc:1187] Background download complete, client: 6, completion type: 0, file size:45166
+[6188:6768:0528/140550.164:WARNING:components\download\internal\background_service\controller_impl.cc:1187] Background download complete, client: 6, completion type: 0, file size:2200227
+[6188:6768:0528/140551.722:WARNING:components\download\internal\background_service\controller_impl.cc:1187] Background download complete, client: 6, completion type: 0, file size:2992963
+[6188:6768:0528/140552.207:WARNING:components\download\internal\background_service\controller_impl.cc:1187] Background download complete, client: 6, completion type: 0, file size:4680
+[6188:6768:0528/140552.531:WARNING:components\download\internal\background_service\controller_impl.cc:1187] Background download complete, client: 6, completion type: 0, file size:2747169
+[6188:6768:0528/140552.795:WARNING:components\download\internal\background_service\controller_impl.cc:1187] Background download complete, client: 6, completion type: 0, file size:118577

@@ -1,56 +1,47 @@
-# Selenium Bot API
+# Visa Appointment Bot
 
-A FastAPI-based web service that provides Selenium automation capabilities through a REST API.
+This is a Python application that automates the process of checking and booking visa appointments.
 
 ## Prerequisites
 
 - Python 3.8 or higher
 - Chrome browser installed
-- pip (Python package manager)
+- Internet connection
 
-## Setup
+## Installation
 
-1. Create a virtual environment (recommended):
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-2. Install dependencies:
+1. Clone this repository
+2. Install the required dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-## Running the Application
+## Usage
 
-Start the server:
+1. Start the application:
 ```bash
 python main.py
 ```
 
-The API will be available at `http://localhost:8000`
+2. Open your web browser and navigate to `http://localhost:8000`
 
-## API Documentation
+3. Use the web interface to:
+   - Enter your login credentials
+   - Select your preferred location
+   - Set the number of cycles to check for appointments
+   - Start the appointment search process
 
-Once the server is running, you can access the interactive API documentation at:
-- Swagger UI: `http://localhost:8000/docs`
-- ReDoc: `http://localhost:8000/redoc`
+## Features
 
-## API Endpoints
+- Automated login to visa appointment system
+- Automatic date and time slot selection
+- Configurable search cycles
+- Web interface for easy interaction
+- Real-time status updates
 
-### POST /bot/execute
-Execute a Selenium bot action.
+## Security Note
 
-Request body:
-```json
-{
-    "url": "https://example.com",
-    "action": "your_action_here"
-}
-```
-
-## Notes
-
-- The bot runs in headless mode by default
-- Make sure Chrome is installed on your system
-- The webdriver will be automatically downloaded and managed by webdriver-manager 
+This application handles sensitive login information. Make sure to:
+- Never share your credentials
+- Run the application on a secure machine
+- Close the application when not in use 
