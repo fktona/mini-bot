@@ -226,8 +226,17 @@ async function runBot(settings) {
                     sendStatusUpdate('Finalizing appointment...');
                     const proceedButton = await waitForElement("button.lrg-common-buttton.light-lanvander-button");
                     proceedButton.click();
-                    sendStatusUpdate('Successfully booked appointment!', 'success');
-                    return;
+
+                    // Wait and check for confirmation letter
+                    await delay(2000);
+                    const confirmationLetter = document.querySelector('div.top-main-head');
+                    if (confirmationLetter && confirmationLetter.textContent.includes('Confirmation Letter')) {
+                        sendStatusUpdate('Successfully booked appointment!', 'success');
+                        return;
+                    } else {
+                        sendStatusUpdate('Appointment was taken by someone else, continuing search...', 'warning');
+                        continue;
+                    }
                 } else {
                     sendStatusUpdate('No time slots available for selected date', 'warning');
                 }
