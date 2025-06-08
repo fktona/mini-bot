@@ -196,16 +196,19 @@ async function runBot(settings) {
             const availableDates = document.querySelectorAll("button.mat-calendar-body-cell.special-date");
             if (availableDates.length > 0) {
                 sendStatusUpdate('Found available date!', 'success');
-                availableDates[0].click();
+                // Select random date
+                const randomDateIndex = Math.floor(Math.random() * availableDates.length);
+                availableDates[randomDateIndex].click();
                 await delay(2000);
 
                 // Wait for and click time slot
                 sendStatusUpdate('Looking for available time slots...');
                 const timeSlots = document.querySelectorAll("button.green-button.ng-star-inserted:not(.selected-slot)");
                 if (timeSlots.length > 0) {
-                    // Click the first available time slot
-                    timeSlots[0].click();
-                    sendStatusUpdate('Selected time slot', 'success');
+                    // Click a random time slot
+                    const randomTimeSlotIndex = Math.floor(Math.random() * timeSlots.length);
+                    timeSlots[randomTimeSlotIndex].click();
+                    sendStatusUpdate('Selected random time slot', 'success');
                     await delay(1000);
 
                     // Verify the slot was selected
