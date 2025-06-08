@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Generate Icons</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+            margin: 10px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Icon Generator</h1>
+        <canvas id="icon16" width="16" height="16"></canvas>
+        <canvas id="icon48" width="48" height="48"></canvas>
+        <canvas id="icon128" width="128" height="128"></canvas>
+        <button onclick="generateIcons()">Generate Icons</button>
+        <button onclick="downloadIcons()">Download Icons</button>
+    </div>
+
+    <script>
+        function drawIcon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+
+            // Background
+            ctx.fillStyle = '#4285f4';
+            ctx.fillRect(0, 0, size, size);
+
+            // Draw a calendar-like shape
+            ctx.fillStyle = 'white';
+            const padding = size * 0.1;
+            const width = size - (padding * 2);
+            const height = size - (padding * 2);
+            ctx.fillRect(padding, padding, width, height);
+
+            // Draw calendar lines
+            ctx.strokeStyle = '#4285f4';
+            ctx.lineWidth = size * 0.05;
+            const lineSpacing = height / 4;
+            for (let i = 1; i < 4; i++) {
+                ctx.beginPath();
+                ctx.moveTo(padding, padding + (lineSpacing * i));
+                ctx.lineTo(size - padding, padding + (lineSpacing * i));
+                ctx.stroke();
+            }
+
+            // Draw checkmark
+            ctx.strokeStyle = '#4285f4';
+            ctx.lineWidth = size * 0.08;
+            ctx.beginPath();
+            ctx.moveTo(padding * 2, size / 2);
+            ctx.lineTo(size / 3, size - padding * 2);
+            ctx.lineTo(size - padding * 2, padding * 2);
+            ctx.stroke();
+        }
+
+        function generateIcons() {
+            drawIcon(document.getElementById('icon16'), 16);
+            drawIcon(document.getElementById('icon48'), 48);
+            drawIcon(document.getElementById('icon128'), 128);
+        }
+
+        function downloadIcons() {
+            const sizes = [16, 48, 128];
+            sizes.forEach(size => {
+                const canvas = document.getElementById(`icon${size}`);
+                const link = document.createElement('a');
+                link.download = `icon${size}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+
+        // Generate icons when page loads
+        window.onload = generateIcons;
+    </script>
+</body>
+
+</html>
